@@ -15,8 +15,7 @@ class Practical5
 		int fact = 1;
 		for( ; number>0 ; )
 		{
-			 fact = fact*number;
-			 number--;
+			 fact *= number--;
 		}
 		return fact ; 
 	}
