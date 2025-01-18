@@ -13,9 +13,10 @@ class Practical5
 	static int factorial1(int number)
 	{
 		int fact = 1;
-		for(int i = number ; i > 0 ; i--)
+		for( ; number>0 ; )
 		{
-			 fact = fact*i;
+			 fact = fact*number;
+			 number--;
 		}
 		return fact ; 
 	}
