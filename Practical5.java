@@ -21,10 +21,10 @@ class Practical5
 		int result5 = sum(arr3 , 0 , 0);
 		System.out.println(result5);
 		
-		int result6 = factorial3(4);
+		int result6 = factorial3(7);
 		System.out.println(result6);
 		
-		int result7 = factorial3(5);
+		int result7 = factorial3(-3);
 		System.out.println(result7);
 
 	}
@@ -34,21 +34,17 @@ class Practical5
 		int fact = 2;
 		
 		if(number < 0)
-		{
-			return -1 ;
-		}
+		return -1 ;
+			
 		else if(number == 0)
-		{
-			return 1;
-		}
+		return 1;
+
 		else if(number == 1)
-		{
-			return 1;
-		}
+		return 1;
+		
 		else if(number == 2)
-		{
-			return 2;
-		}
+		return 2;
+		
 		else
 		{
 			for( ; number > 2 ; fact *= number--)
@@ -64,28 +60,23 @@ class Practical5
 		int fact = 2;
 		
 		if(number < 0)
-		{
-			return -1 ;
-		}
+		return -1 ;
+		
 		else if(number == 0)
-		{
-			return 1;
-		}
+		return 1;
+		
 		else if(number == 1)
-		{
-			return 1;
-		}
+		return 1;
 		else if(number == 2)
-		{
-			return 2;
-		}
+		return 2;
+			
 		else
 		{
 			while(number > 2)
 			{
 				fact *=number--;
 			}
-		return fact;
+			return fact;
 		}
 	}
 	
@@ -94,8 +85,14 @@ class Practical5
 		if(number == 0)
 		return 1;
 		
+		else if(number == 1)
+		return 1;
+		
+		else if(number < 0)
+		return -1;
+		
 		else
-		return number*factorial3(number-1);
+		return number*factorial3(--number);
 	}
 	
 	
@@ -104,9 +101,7 @@ class Practical5
 	{
 	
 		if(count == arr.length)
-		{
 			return get_sum;
-		}
 		else 
 		{
 			get_sum += arr[count++];
