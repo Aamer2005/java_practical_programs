@@ -85,6 +85,8 @@ class Practical5
 	
 	
 	
+	
+	
 	static int sum(int[] arr , int count , int get_sum)
 	{
 	
@@ -94,40 +96,10 @@ class Practical5
 		}
 		else 
 		{
-			get_sum = get_sum+arr[count];
-			count++;
+			get_sum += arr[count++];
 			return sum(arr,count,get_sum);
 		}	
 	}
 		
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }
