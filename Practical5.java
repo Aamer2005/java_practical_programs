@@ -18,7 +18,11 @@ class Practical5
 		{
 			return -1 ;
 		}
-		else if(number == 1 || number == 0)
+		else if(number == 0)
+		{
+			return 1;
+		}
+		else if(number == 1)
 		{
 			return 1;
 		}
@@ -34,13 +38,27 @@ class Practical5
 	
 	static int factorial2(int number)
 	{
-		int fact = 1;
+		int fact = 2;
 		
-		while(number > 0)
+		if(number < 0)
 		{
-			fact = fact*number;
-			number--;
+			return -1 ;
 		}
-	return fact;
+		else if(number == 0)
+		{
+			return 1;
+		}
+		else if(number == 1)
+		{
+			return 1;
+		}
+		else
+		{
+			while(number > 2)
+			{
+				fact *=number--;
+			}
+		return fact;
+		}
 	}
 }
