@@ -20,6 +20,12 @@ class Practical5
 		int arr3[] = {1,2,3,-3,2,-4,10};
 		int result5 = sum(arr3 , 0 , 0);
 		System.out.println(result5);
+		
+		int result6 = factorial3(4);
+		System.out.println(result6);
+		
+		int result7 = factorial3(5);
+		System.out.println(result7);
 
 	}
 	
@@ -83,7 +89,14 @@ class Practical5
 		}
 	}
 	
-	
+	static int factorial3(int number)
+	{
+		if(number == 0)
+		return 1;
+		
+		else
+		return number*factorial3(number-1);
+	}
 	
 	
 	
