@@ -8,6 +8,19 @@ class Practical5
 		
 		int result2 = factorial2(6);
 		System.out.println(result2);
+		
+		int arr[] = {1,2,3,4};
+		int result3 = sum(arr , 0 ,0);
+		System.out.println(result3);
+		
+		int arr2[] = {1,2,3};
+		int result4 = sum(arr2 , 0 , 0);
+		System.out.println(result4);
+		
+		int arr3[] = {1,2,3,-3,2,-4,10};
+		int result5 = sum(arr3 , 0 , 0);
+		System.out.println(result5);
+
 	}
 	
 	static int factorial1(int number)
@@ -69,4 +82,52 @@ class Practical5
 		return fact;
 		}
 	}
+	
+	
+	
+	static int sum(int[] arr , int count , int get_sum)
+	{
+	
+		if(count == arr.length)
+		{
+			return get_sum;
+		}
+		else 
+		{
+			get_sum = get_sum+arr[count];
+			count++;
+			return sum(arr,count,get_sum);
+		}	
+	}
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
