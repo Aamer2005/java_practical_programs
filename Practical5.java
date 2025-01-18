@@ -26,6 +26,10 @@ class Practical5
 		{
 			return 1;
 		}
+		else if(number == 2)
+		{
+			return 2;
+		}
 		else
 		{
 			for( ; number > 2 ; fact *= number--)
@@ -51,6 +55,10 @@ class Practical5
 		else if(number == 1)
 		{
 			return 1;
+		}
+		else if(number == 2)
+		{
+			return 2;
 		}
 		else
 		{
