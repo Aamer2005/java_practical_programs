@@ -12,12 +12,24 @@ class Practical5
 	
 	static int factorial1(int number)
 	{
-		int fact = 1;
-		for( ; number>0 ; fact *= number--)
-		{
+		int fact = 2;
 		
+		if(number < 0)
+		{
+			return -1 ;
 		}
-		return fact ; 
+		else if(number == 1 || number == 0)
+		{
+			return 1;
+		}
+		else
+		{
+			for( ; number > 2 ; fact *= number--)
+			{
+				
+			}
+			return fact ; 
+		}
 	}
 	
 	static int factorial2(int number)
