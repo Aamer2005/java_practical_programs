@@ -10,15 +10,15 @@ class Practical5
 		System.out.println(result2);
 		
 		int arr[] = {1,2,3,4};
-		int result3 = sum(arr , 0 ,0);
+		int result3 = getSum(arr);
 		System.out.println(result3);
 		
 		int arr2[] = {1,2,3};
-		int result4 = sum(arr2 , 0 , 0);
+		int result4 = getSum(arr2 );
 		System.out.println(result4);
 		
 		int arr3[] = {1,2,3,-3,2,-4,10};
-		int result5 = sum(arr3 , 0 , 0);
+		int result5 = getSum(arr3);
 		System.out.println(result5);
 		
 		int result6 = factorial3(7);
@@ -67,6 +67,7 @@ class Practical5
 		
 		else if(number == 1)
 		return 1;
+		
 		else if(number == 2)
 		return 2;
 			
@@ -91,21 +92,28 @@ class Practical5
 		else if(number < 0)
 		return -1;
 		
+		else if(number == 2)
+		return 2;
+		
 		else
 		return number*factorial3(--number);
 	}
 	
 	
+	static int getSum(int[] arr)
+	{
+		return supportGetSum(arr , 0 , 0);
+	}
 	
-	static int sum(int[] arr , int count , int get_sum)
+	static int supportGetSum(int[] arr , int count , int sum)
 	{
 	
 		if(count == arr.length)
-			return get_sum;
+			return sum;
 		else 
 		{
-			get_sum += arr[count++];
-			return sum(arr,count,get_sum);
+			sum += arr[count++];
+			return supportGetSum(arr,count,sum);
 		}	
 	}
 		
