@@ -2,18 +2,27 @@ class Practical6{
 
 	public static void main(String args[])
 	{
-		displayPattern(3);
+		displayPattern1(7);
+		System.out.println();
+		//displayPattern2(5);
 	}
 
 	static void displayPattern1(int size)
 	{
 		int space;
 		int plus;
+		int i= 0;
+		
 		
 		for(int line=1;line <= (2*size)-1 ;line++)
 		{
+			if(line>size)
+			{
+				i++;
+			}
+			
 			space = line > size ? line-size: size-line;
-			plus = line>size?plus=line-space*space:2*line-1;
+			plus = line>size?plus=(size*2-1)-i*2:2*line-1;
 			for(;space>=1;space--)
 			{
 				System.out.print(" ");
@@ -25,4 +34,5 @@ class Practical6{
 			System.out.println();
 		}
 	}
-}
+	
+
