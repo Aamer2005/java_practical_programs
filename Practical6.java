@@ -4,7 +4,7 @@ class Practical6{
 	{
 		  displayPattern2(3);
 		  displayPattern1(3);
-	    displayPattern3(3);
+	    	  displayPattern3(3);
 	}
 
 	static void displayPattern2(int size)
