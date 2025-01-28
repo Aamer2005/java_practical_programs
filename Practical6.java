@@ -2,9 +2,9 @@ class Practical6{
 
 	public static void main(String args[])
 	{
-		displayPattern2(3);
-		displayPattern1(3);
-	  displayPattern3(3);
+		  displayPattern2(3);
+		  displayPattern1(3);
+	    displayPattern3(3);
 	}
 
 	static void displayPattern2(int size)
