@@ -11,8 +11,9 @@ Long temp;
 		array[i] = temp.intValue();	//Converting Long value to Integer
 	}
 	
+	//Declared variable for Iterative
 	Long initialTime1,finalTime1;
-	Long totalTime1= 0l;
+	Double totalTime1= 0d;
 	
 	for(Integer i = 0 ; i<array.length ; i++)
 	{
@@ -21,12 +22,13 @@ Long temp;
 		finalTime1 = System.nanoTime();
 		totalTime1 += finalTime1 - initialTime1;
 	}	
-		totalTime1 = totalTime1/array.length;
+		Double Average1 = totalTime1/array.length;
 		
-		System.out.println(totalTime1);
+		System.out.println("Iterative method Time : " + Average1);
 		
+	//Declared variable for Recursive
 	Long initialTime2,finalTime2;
-	Long totalTime2 = 0l;
+	Double totalTime2 = 0d;
 	
 	for(Integer i = 0 ; i<array.length ; i++)
 	{
@@ -36,9 +38,9 @@ Long temp;
 		totalTime2 += finalTime2 - initialTime2;
 	}
 	
-	totalTime2 = totalTime2/array.length;
+		Double Average2 = totalTime2/array.length;
 		
-		System.out.println(totalTime2);
+		System.out.println("Recursive method Time : " + Average2);
 }
 
 static int factorial1(int number)	//Iterative method 
