@@ -1,14 +1,14 @@
-class SudoString{
+class SudoPuzzle{
 
 int size;
-	String[][] layout;
+String[][] layout;
 	
-	SudoString(int size)
+	SudoPuzzle(int size)
 	{
+	
 		layout = new String[size][size];
 		this.layout = getElement(layout);
 		this.layout = removeElement(this.layout);
-		System.out.println(Grid(this.layout));
 	}
 
 String[][] getElement(String[][] layout)
@@ -16,7 +16,7 @@ String[][] getElement(String[][] layout)
 	int size = layout.length;
 	int[][] arr = new int[layout.length][layout.length];
 	
-	for(int row=0;row<size;row++)
+	for(int row=0;row<2;row++)
 	{
 		for(int column=0;column<size;column++)
 		{
@@ -26,14 +26,13 @@ String[][] getElement(String[][] layout)
 	
 	int arrsize = arr.length;
 
-	for(int row=0,column=0;row<size;row++)
+	for(int row=0,column=0;row<1;row++)
 	{
         for (int i = 0; i < arrsize; i++) {
             // Check if the current element is duplicated
             for (int j = 0; j < i; j++) {
                 if (arr[row][i] == arr[row][j]) {
                     // Increment arr[i] until it is unique
-                    
                   
                     if(arr[row][i]!=0)
                     arr[row][i]=arr[row][i]%arrsize;
@@ -42,14 +41,11 @@ String[][] getElement(String[][] layout)
                     arr[row][i]+=arrsize;
                     }
                     arr[row][i]+=1;
-                    //arr[row][i]=arr[row][i]+1;
                     j = -1; // Restart the loop to check the new value
                 }
             }
         }
         }
-        
-        size = arr.length;
         
        for(int row=1,column;row<size;row++)
 	{
@@ -62,8 +58,6 @@ String[][] getElement(String[][] layout)
 		arr[row][0]=arr[row-1][column-1];
 	}
 	
-	//
-	int leng = Integer.toString(size).length();
 	for(int row=0;row<size;row++)
 	{
 		for(int column=0;column<size;column++)
@@ -96,9 +90,7 @@ public String Grid(String[][] layout)
 	String result="";
 	int size = layout.length;
 	String temp;
-		int leng = Integer.toString(size).length();
 	
-	//sudo
 	for(int line = 1 ; line <= 2*size+1; line++)
 	{
 	if(line%2!=0)
@@ -133,10 +125,18 @@ public String Grid(String[][] layout)
 	return result;
 }
 
+public void display()
+{
+	String result = Grid(this.layout);
+	System.out.println(result);
+}
+
 public static void main(String[] args)
 {
 	Integer size = Integer.parseInt(args[0]);
-	SudoString obj = new SudoString(size);
+	SudoPuzzle obj = new SudoPuzzle(size);
+	
+	obj.display();
 
 }
 }
