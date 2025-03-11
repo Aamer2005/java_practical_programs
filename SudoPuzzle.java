@@ -99,7 +99,7 @@ public String Grid(String[][] layout)
 		{
 			result+=" ";
 			for(int len=Integer.toString(size).length();len>0;len--)
-			result+="_";
+			result+="--";
 		}
 		result+=" ";
 	}
@@ -108,7 +108,7 @@ public String Grid(String[][] layout)
 		for(int i = 3*size;i>0;i = i-3)
 		{
 			result+="|";
-			temp = "%"+Integer.toString(layout.length).length()+"s";
+			temp = "%"+(2*Integer.toString(layout.length).length())+"s";
 			result+=String.format(temp,layout[realRow][realColumn]);
 			realColumn+=1;
 			if(realColumn==size)
