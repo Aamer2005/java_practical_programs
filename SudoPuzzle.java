@@ -136,6 +136,7 @@ public static void main(String[] args)
 	Integer size = Integer.parseInt(args[0]);
 	SudoPuzzle obj = new SudoPuzzle(size);
 	
+	//display sudo puzzle
 	obj.display();
 
 }
