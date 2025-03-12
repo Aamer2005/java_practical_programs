@@ -70,6 +70,7 @@ public static void main(String[] sggs)
 	StudentManagementSystem student1 = new StudentManagementSystem("Aamer",2005,123456789l,"Nanded-431 604","it");
 	StudentManagementSystem student2 = new StudentManagementSystem("abcd",1980,9876543221l,"Mumbai-431 604","extc");
 	
+	//display Student data
 	student1.display();
 	student2.display();
 }
