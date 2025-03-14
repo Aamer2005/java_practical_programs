@@ -1,11 +1,13 @@
 import java.util.*;
-class SudoUpdate{
+
+class SudokoUpdateVersion{
+
 int size;
 String[][] layout;
 int level;
 int[] removeCellIndexCount;
 	
-	SudoUpdate(int size)
+	SudokoUpdateVersion(int size)
 	{
 		level=1;
 		this.size = size;
@@ -21,26 +23,42 @@ void generatePuzzle()
 	removeCells();
 }
 
-//assumes getSolution is right
 void getSolution()
 {
 	int[] pc = new int[size];
+	pc = getCandidate();
+	
+	for(int row=0;row<1;row++)
+	{
+		for(int column=0;column<size;column++)
+		layout[row][column]=""+pc[column];
+	}
+	 for(int row=1,column;row<size;row++)
+	{
+		column=1;
+	
+	for(;column<size;column++)
+	{
+		layout[row][column]=layout[row-1][column-1];
+	}
+		layout[row][0]=layout[row-1][column-1];
+	}
+
+	/*int[] pc = new int[size];
 	for(int row=0;row<size;row++)
 	{
 		pc = getCandidate();
-		
-		for(int column=0;column<size;column++)
+		int column;
+		for( column=0;column<size;column++)
 		{
 			layout[row][column]=""+pc[column];
-			
 		}
 			
 	}
-		if(!isValid())
-		{
-			 getSolution();
-		}
-				
+	if(!isValid())
+	{
+		getSolution();	
+	}*/		
 	
 }
 int[] getCandidate()
@@ -54,12 +72,10 @@ int[] getCandidate()
 		array[count-1]=(int)temp;
 	}
 	
-	
         for (int i = 0; i < size; i++) {
             // Check if the current element is duplicated
             for (int j = 0; j < i; j++) {
                 if (array[i] == array[j]) {
-                    // Increment arr[i] until it is unique
                   
                     if(array[i]!=0)
                     array[i]=array[i]%size;
@@ -73,44 +89,60 @@ int[] getCandidate()
             }
         }
         
-	
 	return array;
 }
 
-boolean isValid()//int givenRow,int givenColumn
+boolean isValid()
 {
 	boolean result = true;
 	
 	for(int row=0,column=0;row<size;row++,column++)
 	{
-        for (int i = 0; i <  size; i++) {
+        for (int i = 0; i <  size; i++) 
+        {
             // Check if the current element is duplicated
-            for (int j = 0; j < i; j++) {
+            for (int j = 0; j < i; j++) 
+            {
             	if (layout[row][i].equals(layout[row][j])&& !(layout[row][j].equals("0")))
             	{
-                    // Increment arr[i] until it is unique
-                  
                     result = false; 
-                   }
                 }
-              
-            }
+             }    
+         }
         
         
-         for (int i = 0; i <  size; i++) {
-            // Check if the current element is duplicated
-            for (int j = 0; j < i; j++) {
+         for (int i = 0; i <  size; i++) 
+         {
+            for (int j = 0; j < i; j++) 
+            {
                 if (layout[i][column].equals(layout[j][column]) && !(layout[j][column].equals("0"))) {
                   
                     result = false; 
                 }
-              
             }
         }
         
         }
        return result;
 }
+
+ boolean isValidNumber(int row, int col, String number) {
+        // Check row for duplicates
+        for (int i = 0; i < size; i++) {
+            if (i != col && layout[row][i].equals(number)) {
+                return false;
+            }
+        }
+
+        // Check column for duplicates
+        for (int i = 0; i < size; i++) {
+            if (i != row && layout[i][col].equals(number)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 
 public void removeCells()
 {
@@ -129,11 +161,9 @@ public void removeCells()
 	
 }
       
-
 public void displayGrid()
 {
 	int realRow=0,realColumn=0;
-	int size = layout.length;
 	String temp;
 	
 	for(int line = 1 ; line <= 2*size+1; line++)
@@ -144,7 +174,7 @@ public void displayGrid()
 		{
 			System.out.print(" ");
 			for(int len=Integer.toString(size).length();len>0;len--)
-			System.out.print("--");
+			System.out.print(""+'\u2500'+'\u2500');
 		}
 		System.out.print(" ");
 	}
@@ -152,7 +182,7 @@ public void displayGrid()
 	{
 		for(int i = 3*size;i>0;i = i-3)
 		{
-			System.out.print("|");
+			System.out.print(""+'\u2502');
 			temp = "%"+(2*Integer.toString(layout.length).length())+"s";
 			System.out.print(String.format(temp,this.layout[realRow][realColumn]));
 			realColumn+=1;
@@ -162,7 +192,7 @@ public void displayGrid()
 				realRow+=1;
 			}	
 		}
-		System.out.print("|");
+		System.out.print(""+'\u2502');
 	}
 		System.out.println();
 	}
@@ -173,17 +203,23 @@ public void displayGrid()
 public void solvePuzzle()
 {
 	String option;
-	
 	Scanner sc = new Scanner(System.in);
-	for(int count = 0, i=-1 ; count<removeCellIndexCount.length/2;count++)
+	
+	for (int row = 0; row < size; row++) 
 	{
-	System.out.println("Enter Number at row "+(removeCellIndexCount[i+1]+1)+" and cell "+(removeCellIndexCount[i+2]+1));
+       		for (int col = 0; col < size; col++) 
+        	{
+           		 // Check if the cell is empty
+           		 if (layout[row][col].equals(" ")) 
+           		 {
+                	 System.out.println("Enter Number at row " + (row + 1) + " and column " + (col + 1));
+               		 String s = sc.nextLine();
+
+			layout[row][col]=s;
 	
-	String s = sc.nextLine();
-	
-	layout[removeCellIndexCount[++i]][removeCellIndexCount[++i]]=s;
-	
-	displayGrid();
+			displayGrid();
+			}
+		}
 	}
 	
 	boolean result = isValid();
@@ -222,113 +258,9 @@ public void solvePuzzle()
 
 public static void main(String[] args)
 {
-	SudoUpdate s = new SudoUpdate(Integer.valueOf(args[0]));
+	SudokoUpdateVersion s = new SudokoUpdateVersion(Integer.valueOf(args[0]));
 	s.displayGrid();
 	s.solvePuzzle();
 }
 
-boolean isValid1(int r , int c, String num)//int givenRow,int givenColumn
-{
-	boolean result = true;
-	
-	for(int row=r,column=c;row<=r;row++,column++)
-	{
-        for (int i = 0; i <  size; i++) {
-            // Check if the current element is duplicated
-            //for (int j = 0; j < i; j++) {
-            	if(c!=i)
-            	{
-                if (num.equals(layout[r][i]) ) {
-                    // Increment arr[i] until it is unique
-                  
-                    result = false; // Restart the loop to check the new value
-                    break;
-               }
-               }
-              
-            //}
-        }
-        
-         for (int i = 0; i <  size; i++) {
-            // Check if the current element is duplicated
-           // for (int j = 0; j < i; j++) {
-                       	if(r!=i)
-                       	{
-                if (num.equals(layout[i][c])) {
-                    // Increment arr[i] until it is unique
-                  
-                    result= false; // Restart the loop to check the new value
-                    break;
-                }
-                }
-              
-            //}
-        }
-        }
-        
-       return result;
 }
-
-
-}
-
-
-
-
-/*
-void getSolution()
-{
-	int size = layout.length;
-	int[][] arr = new int[layout.length][layout.length];
-	
-	for(int row=0;row<2;row++)
-	{
-		for(int column=0;column<size;column++)
-		{
-			arr[row][column] = (int)(System.nanoTime()%size+1);
-		}
-	}
-	
-	int arrsize = arr.length;
-
-	for(int row=0,column=0;row<1;row++)
-	{
-        for (int i = 0; i < arrsize; i++) {
-            // Check if the current element is duplicated
-            for (int j = 0; j < i; j++) {
-                if (arr[row][i] == arr[row][j]) {
-                    // Increment arr[i] until it is unique
-                  
-                    if(arr[row][i]!=0)
-                    arr[row][i]=arr[row][i]%arrsize;
-                    else
-                    {
-                    arr[row][i]+=arrsize;
-                    }
-                    arr[row][i]+=1;
-                    j = -1; // Restart the loop to check the new value
-                }
-            }
-        }
-        }
-        
-       for(int row=1,column;row<size;row++)
-	{
-		column=1;
-	
-	for(;column<size;column++)
-	{
-		arr[row][column]=arr[row-1][column-1];
-	}
-		arr[row][0]=arr[row-1][column-1];
-	}
-	
-	for(int row=0;row<size;row++)
-	{
-		for(int column=0;column<size;column++)
-		{
-			layout[row][column] = Integer.toString(arr[row][column]);
-			
-		}
-	}
-}*/
