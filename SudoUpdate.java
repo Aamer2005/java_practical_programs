@@ -25,6 +25,24 @@ void generatePuzzle()
 
 void getSolution()
 {
+
+	int[] pc = new int[size];
+	for(int row=0;row<size;row++)
+	{
+		pc = getCandidate();
+		int column;
+		for( column=0;column<size;column++)
+		{
+			layout[row][column]=""+pc[column];
+		}
+			
+	}
+	if(!isValid())
+	{
+		getSolution();	
+	}	
+	
+	/*
 	int[] pc = new int[size];
 	pc = getCandidate();
 	
@@ -43,22 +61,7 @@ void getSolution()
 	}
 		layout[row][0]=layout[row-1][column-1];
 	}
-
-	/*int[] pc = new int[size];
-	for(int row=0;row<size;row++)
-	{
-		pc = getCandidate();
-		int column;
-		for( column=0;column<size;column++)
-		{
-			layout[row][column]=""+pc[column];
-		}
-			
-	}
-	if(!isValid())
-	{
-		getSolution();	
-	}*/		
+	*/	
 	
 }
 int[] getCandidate()
