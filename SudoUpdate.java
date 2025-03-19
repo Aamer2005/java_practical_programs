@@ -129,23 +129,6 @@ boolean isValid()
        return result;
 }
 
- boolean isValidNumber(int row, int col, String number) {
-        // Check row for duplicates
-        for (int i = 0; i < size; i++) {
-            if (i != col && layout[row][i].equals(number)) {
-                return false;
-            }
-        }
-
-        // Check column for duplicates
-        for (int i = 0; i < size; i++) {
-            if (i != row && layout[i][col].equals(number)) {
-                return false;
-            }
-        }
-
-        return true;
-    }
 
 public void removeCells()
 {
@@ -234,7 +217,7 @@ public void solvePuzzle()
 		option = sc.nextLine();
 		if(option.equalsIgnoreCase("yes"))
 		{
-			level+=2;
+			level+=1;
 			removeCells();
 			displayGrid();
 			solvePuzzle();
