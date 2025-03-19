@@ -42,7 +42,30 @@ void getSolution()
 		getSolution();	
 	}	
 	
-	
+	/* int[] pc = new int[size];
+ 
+	pc = getCandidate();
+ 	for(int row=0;row<1;row++)
+ 
+	{
+ 		for(int column=0;column<size;column++)
+		layout[row][column]=""+pc[column];
+	}
+ 
+	 for(int row=1,column;row<size;row++)
+ 
+	{
+		column=1;
+	for(;column<size;column++)
+ 
+	{
+	layout[row][column]=layout[row-1][column-1];
+ 
+	}
+ 
+		layout[row][0]=layout[row-1][column-1];
+	}*/	
+			
 }
 int[] getCandidate()
 {
@@ -197,7 +220,7 @@ public void solvePuzzle()
 		option = sc.nextLine();
 		if(option.equalsIgnoreCase("yes"))
 		{
-			level+=1;
+			level+=2;
 			removeCells();
 			displayGrid();
 			solvePuzzle();
