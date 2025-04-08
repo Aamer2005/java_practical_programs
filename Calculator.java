@@ -535,17 +535,7 @@ public class Calculator extends javax.swing.JFrame {
     private String displayString="";
     private String previousString = "0";
 
-public static boolean isDigit(char c)
-{
-	if(c=='1'||c=='2'||c=='3'||c=='4'||c=='5'||c=='6'||c=='7'||c=='8'||c=='9'||c=='0')
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-}
+
 
 public static int precedence(char c)
 {
